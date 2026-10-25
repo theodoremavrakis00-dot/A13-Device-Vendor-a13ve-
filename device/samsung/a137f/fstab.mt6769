@@ -1,0 +1,15 @@
+# -----------------------------------------------------------------
+# File System Table (fstab) for MediaTek MT6769 / Samsung A137F
+# -----------------------------------------------------------------
+
+# Logical Partitions (Dynamic)
+system                                                  /system             ext4      ro,barrier=1                                      wait,logical,first_stage_mount
+vendor                                                  /vendor             ext4      ro,barrier=1                                      wait,logical,first_stage_mount
+product                                                 /product            ext4      ro,barrier=1                                      wait,logical,first_stage_mount
+odm                                                     /odm                ext4      ro,barrier=1                                      wait,logical,first_stage_mount
+system_ext                                              /system_ext         ext4      ro,barrier=1                                      wait,logical,first_stage_mount
+
+# Physical Partitions
+/dev/block/by-name/userdata                             /data               f2fs      noatime,nosuid,nodev,discard,inline_xattr         latemount,wait,check,fileencryption=aes-256-xts:aes-256-cts:v1
+/dev/block/by-name/cache                                /cache              ext4      noatime,nosuid,nodev,noauto_da_alloc              wait,check
+/dev/block/by-name/metadata                             /metadata           ext4      noatime,nosuid,nodev,discard                      wait,formattable,first_stage_mount
